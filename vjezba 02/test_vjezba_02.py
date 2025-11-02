@@ -3,7 +3,6 @@ import builtins
 
 import pytest
 
-# If your code lives in "app.py", this works as-is:
 import vjezba_02 as vjezba_02
 
 
