@@ -17,4 +17,5 @@ def filtriraj_parne(original_list: list[int]) -> list[int]:
 
 lista: list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-print(filtriraj_parne(lista))
+if __name__ == "__main__":
+    print(filtriraj_parne(lista))
