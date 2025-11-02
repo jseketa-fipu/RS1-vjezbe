@@ -1,6 +1,11 @@
 # Vježba 1: Jednostavni kalkulator
 import operator
 
+# pitanja:
+# 1. Je li se program izvrsava u petlji, dok se ne dobije ispravan unos, ili se treba terminirati?
+# 2. Treba li paziti na decimalni zarez/tocku?
+# 3.
+
 # map string input to the operations from the operator package
 supported_operators = {
     "+": operator.add,
@@ -52,7 +57,7 @@ def check_for_division_by_zero(second_operand: float, op: str) -> None:
         raise SystemExit(0)
 
 
-def main() -> None:
+if __name__ == "__main__":
     operand_1 = check_input_for_float("Unesite prvi broj: ")
     operand_2 = check_input_for_float("Unesite drugi broj: ")
     operator_input = check_if_operator_supported("Unesite operator: ")
@@ -60,7 +65,3 @@ def main() -> None:
     operacija = supported_operators[operator_input]
     result = operacija(operand_1, operand_2)
     print(f"Rezultat operacije {operand_1} {operator_input} {operand_2} je {result}")
-
-
-if __name__ == "__main__":
-    main()
