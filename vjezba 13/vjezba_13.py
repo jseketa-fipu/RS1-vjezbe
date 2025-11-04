@@ -61,4 +61,5 @@ def presjek(set_one: set, set_two: set) -> set:
     return return_set
 
 
-print(presjek(skup_1, skup_2))
+if __name__ == "__main__":
+    print(presjek(skup_1, skup_2))
