@@ -1,7 +1,3 @@
-# Combined READMEs
-
-## ninotelefonino
-
 # Raspodijeljeni sustavi: Zadatak za vježbu - 31. 10. 2025.
 
 ## Zadatak: Nino Telefonino
@@ -79,9 +75,7 @@ Ako je broj valjan, postavite ključ `validan` na True i ispunite ostale ključe
 | 069          | Usluge namijenjene djeci                                      | Posebne usluge |
 | 072          | jedinstveni pristupni broj za cijelu državu za posebne usluge | Posebne usluge |
 
-## vjezba 01
-
-Vježba 1: Jednostavni kalkulator
+# Vježba 1: Jednostavni kalkulator
 
 Napišite program koji traži od korisnika unos dva broja (float) te jedan od operatora (+, -, *, /). Program treba ispisati rezultat operacije nad unesenim brojevima u formatu:
 
@@ -95,9 +89,7 @@ Ako korisnik unese nepodržani operator, program treba ispisati poruku:
 
 Nepodržani operator!
 
-## vjezba 02
-
-Vježba 2: Prijestupna godina
+# Vježba 2: Prijestupna godina
 
 Napišite program koji traži unos godine i provjerava je li godina prijestupna. Godina je prijestupna ako:
 
@@ -112,9 +104,7 @@ Ako godina nije prijestupna, program treba ispisati poruku:
 
 Godina ____. nije prijestupna.
 
-## vjezba 03
-
-Vježba 3: Pogađanje broja sve dok nije pogođen
+# Vježba 3: Pogađanje broja sve dok nije pogođen
 
 Implementirajte igru pogađanja broja u rasponu od 1 do 100. Korisnik unosi svoj pokušaj, a program nakon svakog unosa ispisuje poruku koja označava je li uneseni broj veći, manji ili jednak traženom broju. Igra traje dok korisnik ne pogodi točan broj.
 
@@ -122,14 +112,10 @@ Implementirajte igru pogađanja broja u rasponu od 1 do 100. Korisnik unosi svoj
 
     Na kraju ispišite korisniku poruku: "Bravo, pogodio si u __ pokušaja".
 
-## vjezba 04
-
-Vježba 4: Zbrajanje unesenih brojeva
+# Vježba 4: Zbrajanje unesenih brojeva
 Napišite program koji traži od korisnika unos cijelih brojeva sve dok korisnik ne unese broj 0. Nakon unosa 0, program treba ispisati zbroj svih prethodno unesenih brojeva.
 
-## vjezba 05
-
-Vježba 5: Analiziraj sljedeće for petlje
+# Vježba 5: Analiziraj sljedeće for petlje
 
 Pojasnite zašto sljedeća petlja nema (previše) smisla:
 
@@ -164,9 +150,7 @@ for i in range(10, 1, -1):
 3
 2
 
-## vjezba 06
-
-Vježba 6: Krenimo "petljati"
+# Vježba 6: Krenimo "petljati"
 
     Napišite program koji ispisuje sumu svih parnih brojeva od 1 do 100 (uključivo).
 
@@ -176,9 +160,7 @@ Vježba 6: Krenimo "petljati"
 
 Svaki zadatak riješite for i while petljom.
 
-## vjezba 07
-
-Vježba 7: Validacija i provjera jakosti lozinke
+# Vježba 7: Validacija i provjera jakosti lozinke
 
 Napišite program koji traži od korisnika da unese lozinku. Lozinka mora zadovoljavati sljedeće uvjete:
 
@@ -193,9 +175,7 @@ Provjera je li znakovni niz broj: isdigit()
 
 Kod za provjeru dodajte u funkciju provjera_lozinke(lozinka).
 
-## vjezba 08
-
-Vježba 8: Filtriranje parnih iz liste
+# Vježba 8: Filtriranje parnih iz liste
 
 Napišite funkciju koja prima listu cijelih brojeva i vraća novu lista koja sadrži samo parne brojeve iz originalne liste.
 
@@ -205,9 +185,7 @@ lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 print(filtriraj_parne(lista)) # [2, 4, 6, 8, 10]
 
-## vjezba 09
-
-Vježba 9: Uklanjanje duplikata iz liste
+# Vježba 9: Uklanjanje duplikata iz liste
 
 Napišite funkciju koja prima listu i vraća novu listu koja ne sadrži duplikate. Implementaciju odradite pomoćnim skupom.
 
@@ -217,9 +195,7 @@ lista = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5]
 
 print(ukloni_duplikate(lista)) # [1, 2, 3, 4, 5]
 
-## vjezba 10
-
-Vježba 10: Brojanje riječi u tekstu
+# Vježba 10: Brojanje riječi u tekstu
 
 Napišite funkciju koja broji koliko se puta svaka riječ pojavljuje u tekstu (frekvencija riječi) i vraća rječnik s rezultatima.
 
@@ -229,11 +205,9 @@ tekst = "Python je programski jezik koji je jednostavan za učenje i korištenje
 
 print(brojanje_riječi(tekst))
 
-# {'Python': 2, 'je': 3, 'programski': 1, 'jezik': 1, 'koji': 1, 'jednostavan': 1, 'za': 1, 'učenje': 1, 'i': 1, 'korištenje.': 1, 'vrlo': 1, 'popularan.': 1}
+\# {'Python': 2, 'je': 3, 'programski': 1, 'jezik': 1, 'koji': 1, 'jednostavan': 1, 'za': 1, 'učenje': 1, 'i': 1, 'korištenje.': 1, 'vrlo': 1, 'popularan.': 1}
 
-## vjezba 11
-
-Vježba 11: Grupiranje elemenata po paritetu
+# Vježba 11: Grupiranje elemenata po paritetu
 
 Napišite funkciju koja prima listu brojeva i vraća rječnik s dvije liste: jedna za parne brojeve, a druga za neparne brojeve.
 
@@ -243,11 +217,9 @@ lista = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 print(grupiraj_po_paritetu(lista))
 
-# {'parni': [2, 4, 6, 8, 10], 'neparni': [1, 3, 5, 7, 9]}
+\# {'parni': [2, 4, 6, 8, 10], 'neparni': [1, 3, 5, 7, 9]}
 
-## vjezba 12
-
-Vježba 12: Obrnite rječnik
+# Vježba 12: Obrnite rječnik
 
 Napišite funkciju koja prima rječnik i vraća novi rječnik u kojem su ključevi i vrijednosti zamijenjeni.
 
@@ -257,11 +229,9 @@ rjecnik = {"ime": "Ivan", "prezime": "Ivić", "dob": 25}
 
 print(obrni_rjecnik(rjecnik))
 
-# {'Ivan': 'ime', 'Ivić': 'prezime', 25: 'dob'}
+\# {'Ivan': 'ime', 'Ivić': 'prezime', 25: 'dob'}
 
-## vjezba 13
-
-Vježba 13: Napišite sljedeće funkcije:
+# Vježba 13: Napišite sljedeće funkcije:
 
     Funkcija koja vraća n-torku s prvim i zadnjim elementom liste u jednoj liniji koda.
 
@@ -282,9 +252,7 @@ skup_2 = {4, 5, 6, 7, 8}
 
 print(presjek(skup_1, skup_2)) # {4, 5}
 
-## vjezba 14
-
-Vježba 14: Prosti brojevi
+# Vježba 14: Prosti brojevi
 
     Napišite funkciju isPrime() koja prima cijeli broj i vraća True ako je broj prost, a False ako nije. Prost broj je prirodan broj veći od 1 koji je dijeljiv jedino s 1 i samim sobom.
 
@@ -299,9 +267,7 @@ Primjer:
 
 print(primes_in_range(1, 10)) # [2, 3, 5, 7]
 
-## vjezba 15
-
-Vježba 15: Pobroji samoglasnike i suglasnike
+# Vježba 15: Pobroji samoglasnike i suglasnike
 
 Napišite funkciju count_vowels_consonants() koja prima string i vraća rječnik s brojem samoglasnika i brojem suglasnika u tekstu.
 
@@ -314,11 +280,9 @@ tekst = "Python je programski jezik koji je jednostavan za učenje i korištenje
 
 print(count_vowels_consonants(tekst))
 
-# {'vowels': 30, 'consonants': 48}
+\# {'vowels': 30, 'consonants': 48}
 
-## vjezba 16
-
-Vježba 16: Implementacija Dijsktra algoritma za pronalaženje najkraćeg puta
+# Vježba 16: Implementacija Dijsktra algoritma za pronalaženje najkraćeg puta
 
 Napišite funkciju dijkstra(graph, start) koja prima graf predstavljen kao rječnik susjedstva i početni čvor te vraća rječnik s najkraćim udaljenostima od početnog čvora do svih ostalih čvorova u grafu koristeći Dijsktra algoritam.
 
@@ -336,5 +300,4 @@ graph = {
 Primjer poziva funkcije:
 
 print(dijkstra(graph, 'A'))
-# {'A': 0, 'B': 1, 'C': 3, D': 4}
-
+\# {'A': 0, 'B': 1, 'C': 3, D': 4}

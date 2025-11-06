@@ -1,20 +1,21 @@
 """
 Combine all README.md files from subfolders into a single root README.md.
 
-- Walks the repository from the script's directory (assumed project root).
-- Finds README.md in each subdirectory (case-sensitive).
-- For each README.md, writes a heading with its folder path, then the file content.
-- Inserts a blank line between each imported README.
-- Writes/overwrites ./README.md in the project root.
-
-You can tweak EXCLUDED_DIRS if needed.
+Behavior per requirements:
+- Do NOT add headings based on folder names.
+- For each README, convert its first non-empty line into a Markdown H1 heading
+  if it does not already start with '#'.
+- Lines like "# {...}" should be treated as raw text, not headings, by escaping '#'.
+- Insert exactly one blank line between imported files.
+- Output is written to the root-level README.md (overwriting if exists).
 """
 
 from __future__ import annotations
 import os
+import re
 from pathlib import Path
 
-# Folders to skip entirely (add more if needed)
+# Folders to skip entirely (extend as needed)
 EXCLUDED_DIRS = {
     ".git",
     ".hg",
@@ -30,59 +31,73 @@ EXCLUDED_DIRS = {
 }
 
 
-def is_excluded_dir(dirname: str) -> bool:
+def is_excluded(dirname: str) -> bool:
+    """Return True if directory name should be skipped."""
     name = os.path.basename(dirname)
-    return name in EXCLUDED_DIRS or name.startswith(".git")
+    return name in EXCLUDED_DIRS
+
+
+# Pattern to detect lines that would look like headings but are actually data,
+# e.g. "# {'parni': ...}", "# [1, 2]", "# (tuple)", "# 'string'", '# "string"'
+RAW_HASH_PATTERN = re.compile(r"^#\s*[\{\[\(\'\"].*")
+
+
+def transform_readme_text(text: str) -> str:
+    """
+    - Make first non-empty line a '# ' heading if not already starting with '#'
+    - Escape lines that match RAW_HASH_PATTERN so they render as raw text (not headings)
+    """
+    lines = text.splitlines()
+
+    # 1) Promote first non-empty line to a heading if needed
+    for i, line in enumerate(lines):
+        if line.strip():  # found first non-empty
+            if not line.lstrip().startswith("#"):
+                lines[i] = "# " + line
+            break
+
+    # 2) Escape "hash-data" lines so they aren't rendered as headings
+    for i, line in enumerate(lines):
+        if RAW_HASH_PATTERN.match(line):
+            lines[i] = "\\" + line  # prefix a backslash to the '#'
+
+    return "\n".join(lines)
 
 
 def main() -> None:
-    project_root = Path(__file__).resolve().parent
-    output_file = project_root / "README.md"
+    root = Path(__file__).resolve().parent
+    out_path = root / "README.md"
 
-    # Collect all README.md paths except the root output itself
+    # Find all README.md files (exclude the output README itself)
     readmes: list[Path] = []
-    for root, dirs, files in os.walk(project_root):
-        # prune excluded dirs
-        dirs[:] = [d for d in dirs if not is_excluded_dir(os.path.join(root, d))]
-        root_path = Path(root)
-
-        # skip the project root README (we're generating it)
-        if root_path == project_root:
-            # but still allow scanning files at root in case you want to combine other readmes by name
-            pass
-
+    for r, dirs, files in os.walk(root):
+        # prune dirs in-place
+        dirs[:] = [d for d in dirs if not is_excluded(os.path.join(r, d))]
+        rpath = Path(r)
         if "README.md" in files:
-            candidate = root_path / "README.md"
-            # Don't include the output file (in case it already exists)
-            if candidate.resolve() == output_file.resolve():
-                continue
-            readmes.append(candidate)
+            p = rpath / "README.md"
+            if p.resolve() != out_path.resolve():
+                readmes.append(p)
 
-    # Sort paths deterministically (by relative path)
-    readmes.sort(key=lambda p: str(p.relative_to(project_root)).lower())
+    # Sort deterministically by relative path (case-insensitive)
+    readmes.sort(key=lambda p: str(p.relative_to(root)).lower())
 
-    # Build the combined README
-    lines: list[str] = []
-    lines.append("# Combined READMEs\n")
-    for i, readme_path in enumerate(readmes, start=1):
-        rel_dir = readme_path.parent.relative_to(project_root)
-        # Heading for this imported README
-        heading_text = f"## {rel_dir if str(rel_dir) != '.' else 'root'}"
-        lines.append(heading_text + "\n")
+    parts: list[str] = []
 
+    for p in readmes:
         try:
-            content = readme_path.read_text(encoding="utf-8").rstrip()
+            content = p.read_text(encoding="utf-8")
         except UnicodeDecodeError:
-            # Fallback if encoding is odd
-            content = readme_path.read_text(errors="replace")
+            content = p.read_text(errors="replace")
 
-        lines.append(content)
-        # blank line between readmes
-        lines.append("")  # ensures exactly one blank line gap
+        transformed = transform_readme_text(content)
+        parts.append(transformed.rstrip())  # strip trailing newlines for uniformity
+        parts.append("")  # exactly one blank line separator
 
-    # Write/overwrite root README.md
-    output_file.write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"Wrote {output_file} with {len(readmes)} imported README(s).")
+    # Write combined README (ensure single trailing newline)
+    combined = "\n".join(parts).rstrip() + "\n"
+    out_path.write_text(combined, encoding="utf-8")
+    print(f"Wrote {out_path} with {len(readmes)} imported README(s).")
 
 
 if __name__ == "__main__":
