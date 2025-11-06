@@ -18,7 +18,7 @@ forbidden_words_list: list[str] = ["password", "lozinka"]
 
 def check_forbidden_words(lozinka: str) -> bool:
     lower_case = lozinka.lower()
-    return not any(word.lower() in lower_case for word in forbidden_words_list)
+    return any(word.lower() in lower_case for word in forbidden_words_list)
 
 
 def provjera_lozinke(lozinka: str) -> None:
@@ -32,13 +32,20 @@ def provjera_lozinke(lozinka: str) -> None:
     # forbidden words
     forbidden_words: bool = check_forbidden_words(lozinka)
 
+    # all matching cases must be printed out
     if not between_8_and_15_characters:
         print("Lozinka mora sadržavati između 8 i 15 znakova")
-    elif not at_least_one_uppercase or not at_least_one_number:
+    if not at_least_one_uppercase or not at_least_one_number:
         print("Lozinka mora sadržavati barem jedno veliko slovo i jedan broj")
-    elif not forbidden_words:
+    if forbidden_words:
         print("Lozinka ne smije sadržavati riječi 'password' ili 'lozinka'")
-    else:
+
+    if (
+        between_8_and_15_characters
+        and at_least_one_uppercase
+        and at_least_one_number
+        and not forbidden_words
+    ):
         print("Lozinka je jaka!")
 
 

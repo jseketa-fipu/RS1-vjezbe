@@ -10,8 +10,8 @@
 # tekst = "Python je programski jezik koji je jednostavan za učenje i korištenje. Python je vrlo popularan."
 
 # print(count_vowels_consonants(tekst))
-
-# # {'vowels': 30, 'consonants': 48}
+# removed language specific letters to be able to count hits against an english alphabet
+# # {'vowels': 30, 'consonants': 50}
 
 
 def count_vowels_consonants(text: str) -> dict[str, int]:
@@ -29,6 +29,6 @@ def count_vowels_consonants(text: str) -> dict[str, int]:
     return counts
 
 
-text = "Python je programski jezik koji je jednostavan za učenje i korištenje. Python je vrlo popularan."
+text = "Python je programski jezik koji je jednostavan za ucenje i koristenje. Python je vrlo popularan."
 
 print(count_vowels_consonants(text))

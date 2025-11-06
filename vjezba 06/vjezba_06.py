@@ -46,7 +46,7 @@ for i in range(100, 1, -1):
 # list of integers is a non-iterable object
 # index is to be started at 1, so it can be used in a formatted string
 for i, number in enumerate(list_odd_numbers_for_loop, start=1):
-    print(f"{i}. neparni broj je: {number}")
+    print(f"{i}. neparni broj je (for petlja): {number}")
 
 # Napišite program koji ispisuje prvih 10 neparnih brojeva u obrnutom redoslijedu.
 # while petlja
@@ -57,7 +57,7 @@ start = 100
 while number_needed:
     if start % 2 != 0:
         index = total_needed - number_needed + 1
-        print(f"{index}. neparni broj je: {start}")
+        print(f"{index}. neparni broj je (while petlja): {start}")
         number_needed = number_needed - 1
     start = start - 1
 
@@ -77,7 +77,9 @@ for _ in range(1000):
     sequence_for_loop.append(a)
     a, b = b, a + b
 
-print(f"Fibonacci niz do 1000 je: {', '.join(map(str, sequence_for_loop))}")
+print(
+    f"Fibonacci niz do 1000 je (for petlja): {', '.join(map(str, sequence_for_loop))}"
+)
 
 
 # while petlja
@@ -92,4 +94,6 @@ while a <= 1000:
 # wrong output, empty first element
 # Fibonacci niz do 1000 je: , 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987
 # That leading comma comes from sep=", " being inserted between the header string and the first number:
-print(f"Fibonacci niz do 1000 je: {', '.join(map(str, sequence_while_loop))}")
+print(
+    f"Fibonacci niz do 1000 je (while petlja): {', '.join(map(str, sequence_while_loop))}"
+)

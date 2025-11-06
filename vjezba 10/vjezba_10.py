@@ -27,7 +27,7 @@ def count_words_normalized(input_text: str) -> dict[str, int]:
 
 
 text: str = (
-    "Python je programski jezik koji je jednostavan za učenje i korištenje. Python je vrlo popularan."
+    "Python je programski jezik koji je jednostavan za ucenje i koristenje. Python je vrlo popularan."
 )
 if __name__ == "__main__":
     print(count_words_normalized(text))

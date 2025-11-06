@@ -1,3 +1,5 @@
+import json
+
 PREFIX_MAP = {
     # Fiksna mreža
     "01": {
@@ -142,3 +144,52 @@ def validate_and_identify_number(input: str) -> dict:
                 return_dict["operater"] = None
 
     return return_dict
+
+
+if __name__ == "__main__":
+    numbers: list = [
+        "091 721 7633",
+        "+385 91 721 7633",
+        "00385 91 721 7633",
+        "(385)917217633",
+        "098 123 4567",
+        "099123456",
+        "095-765-4321",
+        "092 123 456",
+        "0971234567",
+        "01 234 5678",
+        "051-123-456",
+        "0521234567",
+        "020 123456",
+        "(385)51 123 456",
+        "0800 123456",
+        "060123456",
+        "072123456",
+        "385917217633",
+        "+385981234567",
+        "00385(0)91 721 7633",
+        "+386 40 123 456",
+        "071123456",
+        "91 721 7633",
+        "091 12345",
+        "091 12345678",
+        "0800 12345",
+        "0800 1234567",
+        "(385)05112345",
+        "(385)05112345678",
+        "abc",
+        "",
+        "   095 12A 345",
+    ]
+
+    for number in numbers:
+        print(f"\nNumber is: {number}")
+        print("Result is: ")
+        print(
+            json.dumps(
+                validate_and_identify_number(cleanup_number(number)),
+                indent=2,
+                sort_keys=True,
+                ensure_ascii=False,
+            )
+        )

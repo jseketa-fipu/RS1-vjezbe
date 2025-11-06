@@ -46,4 +46,4 @@ def primes_in_range(start: int, stop: int) -> list[int]:
     return result_list
 
 
-print(primes_in_range(1, 10))
+print(primes_in_range(1, 10))  # 2, 3, 5, 7

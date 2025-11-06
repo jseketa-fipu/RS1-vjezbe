@@ -8,6 +8,6 @@ for i in range(10, 1, 2):
     print(i)
 
 # second breakpoint
-# counts back from 10 to 1 (1 not included, beware !=)
+# counts back from 10 to 1 (1 not included, beware <>)
 for i in range(10, 1, -1):
     print(i)

@@ -1,3 +1,11 @@
+# Vježba 3: Pogađanje broja sve dok nije pogođen
+
+# Implementirajte igru pogađanja broja u rasponu od 1 do 100. Korisnik unosi svoj pokušaj, a program nakon svakog unosa ispisuje poruku koja označava je li uneseni broj veći, manji ili jednak traženom broju. Igra traje dok korisnik ne pogodi točan broj.
+
+#     Za izlazak iz igre koristite pomoćnu bool varijablu broj_je_pogoden.
+
+#     Na kraju ispišite korisniku poruku: "Bravo, pogodio/la si u __ pokušaja".
+
 import random
 
 
@@ -50,7 +58,9 @@ def main() -> None:
             pogodibroj.increment_number_of_tries()
         elif get_number == pogodibroj.get_secret_number:
             pogodibroj.increment_number_of_tries()
-            print(f"Bravo, pogodio si u {pogodibroj.get_number_of_tries()} pokusaja.")
+            print(
+                f"Bravo, pogodio/la si u {pogodibroj.get_number_of_tries()} pokusaja."
+            )
             break
 
 

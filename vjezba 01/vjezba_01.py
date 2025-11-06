@@ -1,10 +1,19 @@
 # Vježba 1: Jednostavni kalkulator
+# Vježba 1: Jednostavni kalkulator
+
+# Napišite program koji traži od korisnika unos dva broja (float) te jedan od operatora (+, -, *, /). Program treba ispisati rezultat operacije nad unesenim brojevima u formatu:
+
+# Rezultat operacije 5.0 + 3.0 je 8.0
+
+# Ako korisnik pokuša dijeljenje s nulom, program treba ispisati poruku:
+
+# Dijeljenje s nulom nije dozvoljeno!
+
+# Ako korisnik unese nepodržani operator, program treba ispisati poruku:
+
+# Nepodržani operator!
 import operator
 
-# pitanja:
-# 1. Je li se program izvrsava u petlji, dok se ne dobije ispravan unos, ili se treba terminirati?
-# 2. Treba li paziti na decimalni zarez/tocku?
-# 3.
 
 # map string input to the operations from the operator package
 supported_operators = {
